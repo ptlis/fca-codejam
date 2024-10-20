@@ -35,17 +35,24 @@ fun readChemtrail(fileName: String): String {
 
 fun recursiveReact(input: String): String = recursiveReact(input.toCharArray()).joinToString("")
 
-fun recursiveReact(input: CharArray, position: Int = 0): CharArray {
-    for (i in position..(input.size - 2)) {
-        if (sameLatterDifferentCase(input[i], input[i + 1])) {
-            return recursiveReact(
-                input.filterIndexed { j, _ -> j != i && j != i + 1 }.toCharArray(),
-                max(i - 1, 0)
-            )
+fun recursiveReact(input: CharArray): CharArray {
+    val replaceableInput: MutableList<Char> = input.toMutableList()
+    var lPos = 0
+    do {
+        if (sameLatterDifferentCase(replaceableInput[lPos], replaceableInput[lPos + 1])) {
+            replaceableInput.removeAt(lPos)
+            replaceableInput.removeAt(lPos)
+            lPos--;
+        } else {
+            lPos++
         }
+    } while (lPos + 1 < replaceableInput.size)
+
+    if (input.size != replaceableInput.size && replaceableInput.size > 0) {
+        return recursiveReact(replaceableInput.toCharArray())
     }
 
-    return input
+    return replaceableInput.toCharArray()
 }
 
 fun inPlaceReact(input: String): String {
