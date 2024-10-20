@@ -2,11 +2,29 @@ package uk.org.fca.oppositesattract
 
 import java.io.File
 import kotlin.math.max
+import kotlin.time.measureTime
 
 fun main () {
     val largeChemtrail = readChemtrail("data/chemtrail")
     println(largeChemtrail)
-    println(react(largeChemtrail))
+
+    var recursiveResult = ""
+    val recursiveExecutionTime = measureTime{
+        recursiveResult = recursiveReact(largeChemtrail)
+    }
+
+    println("Recursive algorithm")
+    println(recursiveResult)
+    println("Execution time $recursiveExecutionTime")
+
+    var inPlaceResult = ""
+    val inPlaceExecutionTime = measureTime{
+        inPlaceResult = inPlaceReact(largeChemtrail)
+    }
+
+    println("In-place algorithm")
+    println(inPlaceResult)
+    println("Execution time $inPlaceExecutionTime")
 }
 
 fun readChemtrail(fileName: String): String {
@@ -15,10 +33,7 @@ fun readChemtrail(fileName: String): String {
         .first()
 }
 
-
-fun react(input: String): String {
-    return recursiveReact(input.toCharArray()).joinToString("")
-}
+fun recursiveReact(input: String): String = recursiveReact(input.toCharArray()).joinToString("")
 
 fun recursiveReact(input: CharArray, position: Int = 0): CharArray {
     for (i in position..(input.size - 2)) {
@@ -31,6 +46,22 @@ fun recursiveReact(input: CharArray, position: Int = 0): CharArray {
     }
 
     return input
+}
+
+fun inPlaceReact(input: String): String {
+    val mutableInput = input.toCharArray().toMutableList()
+    var lPos = 0
+    do {
+        if (sameLatterDifferentCase(mutableInput[lPos], mutableInput[lPos + 1])) {
+            mutableInput.removeAt(lPos)
+            mutableInput.removeAt(lPos)
+            lPos--
+        } else {
+            lPos++
+        }
+    } while (lPos + 1 < mutableInput.size)
+
+    return mutableInput.joinToString("")
 }
 
 fun sameLatterDifferentCase(char1: Char, char2: Char): Boolean =

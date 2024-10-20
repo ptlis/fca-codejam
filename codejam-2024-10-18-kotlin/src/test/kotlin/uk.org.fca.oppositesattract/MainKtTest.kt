@@ -5,37 +5,72 @@ import kotlin.test.Test
 
 class MainKtTest {
     @Test
-    fun testExample1() {
+    fun testExample1Recursive() {
         val input = "aA"
         val expected = ""
-        assertEquals(expected, react(input))
+        assertEquals(expected, recursiveReact(input))
     }
 
     @Test
-    fun testExample2() {
+    fun testExample2Recursive() {
         val input = "abBA"
         val expected = ""
-        assertEquals(expected, react(input))
+        assertEquals(expected, recursiveReact(input))
     }
 
     @Test
-    fun testExample3() {
+    fun testExample3Recursive() {
         val input = "abAB"
         val expected = "abAB"
-        assertEquals(expected, react(input))
+        assertEquals(expected, recursiveReact(input))
     }
 
     @Test
-    fun testExample4() {
+    fun testExample4Recursive() {
         val input = "aabAAB"
         val expected = "aabAAB"
-        assertEquals(expected, react(input))
+        assertEquals(expected, recursiveReact(input))
     }
 
     @Test
-    fun testExample5() {
+    fun testExample5Recursive() {
         val input = "dabAcCaCBAcCcaDA"
         val expected = "dabCBAcaDA"
-        assertEquals(expected, react(input))
+        assertEquals(expected, recursiveReact(input))
+    }
+
+    @Test
+    fun testExample1InPlace() {
+        val input = "aA"
+        val expected = ""
+        assertEquals(expected, inPlaceReact(input))
+    }
+
+    @Test
+    fun testExample2InPlace() {
+        val input = "abBA"
+        val expected = ""
+        assertEquals(expected, inPlaceReact(input))
+    }
+
+    @Test
+    fun testExample3InPlace() {
+        val input = "abAB"
+        val expected = "abAB"
+        assertEquals(expected, inPlaceReact(input))
+    }
+
+    @Test
+    fun testExample4InPlace() {
+        val input = "aabAAB"
+        val expected = "aabAAB"
+        assertEquals(expected, inPlaceReact(input))
+    }
+
+    @Test
+    fun testExample5InPlace() {
+        val input = "dabAcCaCBAcCcaDA"
+        val expected = "dabCBAcaDA"
+        assertEquals(expected, inPlaceReact(input))
     }
 }
