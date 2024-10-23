@@ -5,44 +5,86 @@ import kotlin.test.Test
 
 class MainKtTest {
     @Test
-    fun testExample1() {
+    fun testExampleInPlace1() {
         val input = "aA"
         val expected = ""
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
     }
 
     @Test
-    fun testExample2() {
+    fun testExampleInPlace2() {
         val input = "abBA"
         val expected = ""
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
     }
 
     @Test
-    fun testExample3() {
+    fun testExampleInPlace3() {
         val input = "abAB"
         val expected = "abAB"
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
     }
 
     @Test
-    fun testExample4() {
+    fun testExampleInPlace4() {
         val input = "aabAAB"
         val expected = "aabAAB"
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
     }
 
     @Test
-    fun testExample5() {
+    fun testExampleInPlace5() {
         val input = "dabAcCaCBAcCcaDA"
         val expected = "dabCBAcaDA"
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
     }
 
     @Test
-    fun testExample6() {
+    fun testExampleInPlace6() {
         val input = "aAB"
         val expected = "B"
-        assertEquals(expected, react(input))
+        assertEquals(expected, inPlaceReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque1() {
+        val input = "aA"
+        val expected = ""
+        assertEquals(expected, doubleDequeReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque2() {
+        val input = "abBA"
+        val expected = ""
+        assertEquals(expected, doubleDequeReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque3() {
+        val input = "abAB"
+        val expected = "abAB"
+        assertEquals(expected, doubleDequeReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque4() {
+        val input = "aabAAB"
+        val expected = "aabAAB"
+        assertEquals(expected, doubleDequeReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque5() {
+        val input = "dabAcCaCBAcCcaDA"
+        val expected = "dabCBAcaDA"
+        assertEquals(expected, doubleDequeReact(input))
+    }
+
+    @Test
+    fun testExampleDoubleDeque6() {
+        val input = "aAB"
+        val expected = "B"
+        assertEquals(expected, doubleDequeReact(input))
     }
 }
