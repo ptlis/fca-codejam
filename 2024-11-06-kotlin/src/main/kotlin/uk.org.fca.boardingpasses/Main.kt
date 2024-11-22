@@ -24,6 +24,7 @@ data class BoardingPass(val row: Int, val col: Int) {
 }
 
 fun main () {
+    // AOC 2000 Day 5 Part 1
     var result: Int
     val executionTime = measureTime{
         result = readPasses("data/boardingcodes")
@@ -33,6 +34,21 @@ fun main () {
     }
     println(result)
     println("Execution Time $executionTime")
+
+
+    // AOC 2000 Day 5 Part 2
+    var result2: Int
+    val executionTime2 = measureTime{
+        val passesMap = readPasses("data/boardingcodes")
+            .map { BoardingPass.parse(it).seatId }
+
+        result2 = (0..<1024)
+            .filter { !passesMap.contains(it) && passesMap.contains(it - 1) && passesMap.contains(it + 1) }
+            .first()
+    }
+    println(result2)
+    println("Execution Time $executionTime2")
+
 }
 
 fun readPasses(fileName: String): List<String> {
